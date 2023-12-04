@@ -33,3 +33,13 @@
 // console.log("a");
 
 // Try-Catch-Finally
+try{
+    console.log("Başladı!");
+    throw new Error("Test Hatası");
+}catch(e){
+    console.log("Bir Hata Oluştu!");
+}finally{
+    console.log("")
+}
+
+console.log("a")
