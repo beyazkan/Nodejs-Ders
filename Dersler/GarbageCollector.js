@@ -48,4 +48,8 @@
 // console.log(arr);
 
 // Garbage Collector - Memory Management - Memory Leak
-const a = 5;
+if(true){
+    let a = 10;
+    console.log(a);
+}
+
