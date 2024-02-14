@@ -1,48 +1,70 @@
-// Rest Parameters
+// Destructuring
+
+// Destructuring Assingment
+var a, b, rest;
+
+// a = 10;
+// b = 20;
+
+// [a, b] = [10, 20];
+
+// console.log(a);
+// console.log(b);
+
+// [a, b, ...rest] = [10,20,30,40,50,60];
+
+// console.log(a);
+// console.log(b);
+// console.log(rest);
+
+// ({a,b} = {a:10, b:20});
+// console.log(a);
+// console.log(b);
+
+// ({a,b,...rest} = {a:10,b:20,c:30,d:40});
+
+// console.log(a);
+// console.log(b);
+// console.log(rest);
+
+// Array destructuring
+
+const arrConfig = ['localhost', '8000', '900'];
 
 // ES5
+// var server = arrConfig[0];
+// var port = arrConfig[1];
+// var timeout = arrConfig[2];
 
-// function sum(){
-//     console.log(arguments);
-// }
+// console.log(server, port, timeout);
 
-function sumES5(){
-    let arr = Array.prototype.slice.call(arguments);
+//const [server, port, timeout] = arrConfig;
 
-    let result = 0;
+//console.log(server, port, timeout);
 
-    arr.forEach(function(item){
-        result += item;
-    });
+// Object destructuring
 
-    return result;
-}
+const objConfig = {
+    server: 'localhost',
+    port: '8080',
+    timeout: 800
+};
 
-console.log(sumES5(10,20,30));
+// var server = objConfig.server;
+// var port = objConfig.port;
+// var timeout = objConfig.timeout;
 
-// ES6
+// const {server, port, timeout} = objConfig;
+// console.log(server, port, timeout);
 
-function sumES6(...arr){
-    let result = 0;
+// let {timeout: t} = objConfig;
+// console.log(t);
 
-    arr.forEach(item => result += item)
-    return result;
-}
+// let {server, port, timeout = 900} = objConfig;
+// console.log(server, port, timeout);
 
-console.log(sumES6(10,20,30,40));
+const days = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
 
-// ES5
+const [,,carsamba,, cuma] = days;
 
-
-// ES6
-// function isDriver(...years){
-//     years.forEach(year => console.log(2018-year >= 18));
-// }
-
-// isDriver(1990, 2002, 1983, 2005,1996);
-
-function isDriver(age, ...years){
-    years.forEach(year => console.log(2018-year >= age));
-}
-
-isDriver(17, 1990, 2002, 1983, 2005,1996);
+console.log(carsamba, cuma);
