@@ -1,8 +1,48 @@
-let h1 = document.querySelector('h1');
-let divs = document.querySelectorAll('div');
+// Rest Parameters
 
-let tags = [h1,...divs];
+// ES5
 
-tags.forEach(tag => tag.style.color = 'red');
+// function sum(){
+//     console.log(arguments);
+// }
 
-console.log(tags);
+function sumES5(){
+    let arr = Array.prototype.slice.call(arguments);
+
+    let result = 0;
+
+    arr.forEach(function(item){
+        result += item;
+    });
+
+    return result;
+}
+
+console.log(sumES5(10,20,30));
+
+// ES6
+
+function sumES6(...arr){
+    let result = 0;
+
+    arr.forEach(item => result += item)
+    return result;
+}
+
+console.log(sumES6(10,20,30,40));
+
+// ES5
+
+
+// ES6
+// function isDriver(...years){
+//     years.forEach(year => console.log(2018-year >= 18));
+// }
+
+// isDriver(1990, 2002, 1983, 2005,1996);
+
+function isDriver(age, ...years){
+    years.forEach(year => console.log(2018-year >= age));
+}
+
+isDriver(17, 1990, 2002, 1983, 2005,1996);
