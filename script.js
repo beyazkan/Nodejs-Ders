@@ -1,71 +1,50 @@
-// Arrays in ES6
+// Map: key/value pairs (Collection)
 
-// const boxes = document.querySelectorAll('.box');
+let val;
 
-// ES5
-// let boxesES5 = Array.prototype.slice.call(boxes);
+const numbers = new Map();
 
-// boxesES5.forEach(function(box){
-//     box.style.backgroundColor = 'green';
-// });
+numbers.set(1, 'one');
+numbers.set('2', 'two');
+numbers.set(3, 'three');
+numbers.set('four', 'four');
 
-// ES6
-// Array.from(boxes).forEach(box => box.style.backgroundColor = 'green');
+val = numbers;
+val = numbers.get(1);
+val = numbers.get('2');
+val = numbers.get('four');
+val = numbers.size;
+val = numbers.has(1);
+//numbers.delete('four');
+val = numbers.has('four');
+//numbers.clear();
 
-// ES5
-// for(let i = 0; i < boxesES5.length; i++){
-//     if(boxesES5[i].className =='box blue'){
-//         continue;
-//     }
-//     boxesES5[i].textContent = "I'm changed";
-//     boxesES5[i].style.backgroundColor = 'blue';
+console.log(val);
+console.log(numbers);
+
+// for(var [key, value] of numbers){
+//     console.log(key + ' = ' + value);
 // }
 
-// ES6
-// var boxesES6 = Array.from(boxes);
-
-// for(let box of boxesES6){
-//     if(box.className == 'box blue'){
-//         continue;
-//     }
-//     box.textContent = "I'm changed";
-//     box.style.backgroundColor = 'blue';
+// for(var [key, value] of numbers.entries()){
+//     console.log(key + ' = ' + value);
 // }
 
-// from
-// let arr = Array.from('Modern Javascript');
-// console.log(arr);
+numbers.forEach(function(key, value){
+    console.log(key + ' = ' + value);
+});
 
-const products = [
-    {name: 'Samsung S8', price: 3000},
-    {name: 'Samsung S8', price: 3000},
-    {name: 'Samsung S7', price: 2000},
-    {name: 'Samsung S6', price: 1000}
-];
+var first = new Map([
+    [1, 'one'],
+    [2, 'two'],
+    [3, 'three']
+]);
 
-// console.log(Array.from(products, prd => prd.price == 1000));
-// console.log(products.find( prd => prd.name == 'Samsung S8'));
-// console.log(products.filter(prd => prd.price == 3000));
-// console.log(products.findIndex(prd => prd.price == 2000));
-// console.log(products.findIndex(prd => prd.price == 5000));
+var second = new Map([
+    [4, 'four'],
+    [5, 'five']
+])
 
-let numbers = ['a','b','c','d'];
+var merged = new Map([...first, ...second]);
 
-// let entries = numbers.entries();
-
-// for(let letter of entries){
-//     console.log(letter);
-// }
-
-let keys = numbers.keys();
-
-for(let key of keys){
-    console.log(key);
-}
-
-
-let values = numbers.values();
-
-for(let value of values){
-    console.log(value);
-}
+console.log(merged);
