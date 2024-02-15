@@ -1,70 +1,71 @@
-// Destructuring
+// Arrays in ES6
 
-// Destructuring Assingment
-var a, b, rest;
-
-// a = 10;
-// b = 20;
-
-// [a, b] = [10, 20];
-
-// console.log(a);
-// console.log(b);
-
-// [a, b, ...rest] = [10,20,30,40,50,60];
-
-// console.log(a);
-// console.log(b);
-// console.log(rest);
-
-// ({a,b} = {a:10, b:20});
-// console.log(a);
-// console.log(b);
-
-// ({a,b,...rest} = {a:10,b:20,c:30,d:40});
-
-// console.log(a);
-// console.log(b);
-// console.log(rest);
-
-// Array destructuring
-
-const arrConfig = ['localhost', '8000', '900'];
+// const boxes = document.querySelectorAll('.box');
 
 // ES5
-// var server = arrConfig[0];
-// var port = arrConfig[1];
-// var timeout = arrConfig[2];
+// let boxesES5 = Array.prototype.slice.call(boxes);
 
-// console.log(server, port, timeout);
+// boxesES5.forEach(function(box){
+//     box.style.backgroundColor = 'green';
+// });
 
-//const [server, port, timeout] = arrConfig;
+// ES6
+// Array.from(boxes).forEach(box => box.style.backgroundColor = 'green');
 
-//console.log(server, port, timeout);
+// ES5
+// for(let i = 0; i < boxesES5.length; i++){
+//     if(boxesES5[i].className =='box blue'){
+//         continue;
+//     }
+//     boxesES5[i].textContent = "I'm changed";
+//     boxesES5[i].style.backgroundColor = 'blue';
+// }
 
-// Object destructuring
+// ES6
+// var boxesES6 = Array.from(boxes);
 
-const objConfig = {
-    server: 'localhost',
-    port: '8080',
-    timeout: 800
-};
+// for(let box of boxesES6){
+//     if(box.className == 'box blue'){
+//         continue;
+//     }
+//     box.textContent = "I'm changed";
+//     box.style.backgroundColor = 'blue';
+// }
 
-// var server = objConfig.server;
-// var port = objConfig.port;
-// var timeout = objConfig.timeout;
+// from
+// let arr = Array.from('Modern Javascript');
+// console.log(arr);
 
-// const {server, port, timeout} = objConfig;
-// console.log(server, port, timeout);
+const products = [
+    {name: 'Samsung S8', price: 3000},
+    {name: 'Samsung S8', price: 3000},
+    {name: 'Samsung S7', price: 2000},
+    {name: 'Samsung S6', price: 1000}
+];
 
-// let {timeout: t} = objConfig;
-// console.log(t);
+// console.log(Array.from(products, prd => prd.price == 1000));
+// console.log(products.find( prd => prd.name == 'Samsung S8'));
+// console.log(products.filter(prd => prd.price == 3000));
+// console.log(products.findIndex(prd => prd.price == 2000));
+// console.log(products.findIndex(prd => prd.price == 5000));
 
-// let {server, port, timeout = 900} = objConfig;
-// console.log(server, port, timeout);
+let numbers = ['a','b','c','d'];
 
-const days = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
+// let entries = numbers.entries();
 
-const [,,carsamba,, cuma] = days;
+// for(let letter of entries){
+//     console.log(letter);
+// }
 
-console.log(carsamba, cuma);
+let keys = numbers.keys();
+
+for(let key of keys){
+    console.log(key);
+}
+
+
+let values = numbers.values();
+
+for(let value of values){
+    console.log(value);
+}
