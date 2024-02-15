@@ -1,50 +1,57 @@
-// Map: key/value pairs (Collection)
+// Sets (Collection - Unique Value)
 
 let val;
+var mySet = new Set();
 
-const numbers = new Map();
+mySet.add(1);
+mySet.add(2);
+mySet.add(2);
+mySet.add(4);
+mySet.add('iki');
+mySet.add({a:1, b: 2});
+mySet.add({a:1, b: 2});
 
-numbers.set(1, 'one');
-numbers.set('2', 'two');
-numbers.set(3, 'three');
-numbers.set('four', 'four');
+var obj = {a: 1, b:2};
 
-val = numbers;
-val = numbers.get(1);
-val = numbers.get('2');
-val = numbers.get('four');
-val = numbers.size;
-val = numbers.has(1);
-//numbers.delete('four');
-val = numbers.has('four');
-//numbers.clear();
+mySet.add(obj);
+mySet.add('iki');
+mySet.add([1,2,3,4]);
+mySet.add([1,2,3,4]);
 
-console.log(val);
-console.log(numbers);
+val = mySet.has(1);
+val = mySet.has(3);
+val = mySet.has(obj);
+val = mySet.size;
+mySet.delete(1);
 
-// for(var [key, value] of numbers){
-//     console.log(key + ' = ' + value);
+// console.log(mySet);
+// console.log(val);
+
+// for(let item of mySet){
+//     console.log(item);
 // }
 
-// for(var [key, value] of numbers.entries()){
-//     console.log(key + ' = ' + value);
+// for(let item of mySet.keys()){
+//     console.log(item);
 // }
 
-numbers.forEach(function(key, value){
-    console.log(key + ' = ' + value);
-});
+// for(let item of mySet.values()){
+//     console.log(item);
+// }
 
-var first = new Map([
-    [1, 'one'],
-    [2, 'two'],
-    [3, 'three']
-]);
+// console.log(Array.from(mySet));
 
-var second = new Map([
-    [4, 'four'],
-    [5, 'five']
-])
+let mySet2 = new Set([1,2,3,4]);
 
-var merged = new Map([...first, ...second]);
+// console.log(mySet2);
 
-console.log(merged);
+// intersect
+// var intersect = new Set(Array.from(mySet).filter(x => mySet2.has(x)));
+
+var intersect = new Set([...mySet].filter(x => mySet2.has(x)));
+// console.log(intersect);
+
+// difference
+
+var difference = new Set([...mySet].filter(x => !mySet2.has(x)));
+console.log(difference);
