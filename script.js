@@ -1,62 +1,54 @@
-// Classes
+// Sub Classes
 
 // ES5
-
-var PersonES5 = function(name, job, yearOfBirth){
-    this.name = name;
-    this.job = job;
-    this.yearOfBirth = yearOfBirth;
+function PersonES5(firstname, lastname){
+    this.firstname = firstname;
+    this.lastname = lastname;
 }
 
-PersonES5.prototype.calculateAge = function(){
-    return 2018 - this.yearOfBirth;
+PersonES5.prototype.sayHi = function(){
+    return `Hello I'm ${this.firstname} ${this.lastname}`;
 }
 
-var yigit = new PersonES5('Yiğit', 'Student', 2010);
+function CustomerES5(firstname, lastname, phone, username){
+    PersonES5.call(this, firstname, lastname);
+    this.phone = phone;
+    this.username = username;
+}
 
-console.log(yigit.calculateAge());
-console.log(yigit);
+CustomerES5.prototype = Object.create(PersonES5.prototype);
+
+let customer = new CustomerES5('Sena', 'Turan', '1234567', 'sena.turan');
+
+console.log(customer.sayHi());
+console.log(customer);
 
 // ES6
-
-class PersonES6 {
-    constructor(name, job, yearOfBirth){
-        this.name = name;
-        this.yearOfBirth = yearOfBirth;
-        this.job = job;
+class PersonES6{
+    constructor(firstname, lastname){
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
-    calculateAge(){
-        return 2018 - this.yearOfBirth;
-    }
-
-    static sayHi(){
-        console.log('Hello there');
+    sayHi(){
+        return `Hello I'm ${this.firstname} ${this.lastname}`;
     }
 }
 
-let emel = new PersonES6('emel', 'teacher', 1989);
-
-// console.log(emel.calculateAge());
-// console.log(emel);
-
-// PersonES6.sayHi();
-
-class Point{
-    constructor(x,y){
-        this.x = x;
-        this.y = y;
+class CustomerES6 extends PersonES6{
+    constructor(firstname, lastname, phone, username){
+        super(firstname, lastname);
+        this.phone = phone;
+        this.username = username;
     }
 
-    static distance(a,b){
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-
-        return Math.hypot(dx, dy);
+    static getTotal(){
+        return 1000;
     }
 }
 
-const d1 = new Point(10,10);
-const d2 = new Point(20,20);
+let customer1 = new CustomerES6('Volkan', 'Yükselen', '1234567', 'volkan.yukselen');
 
-console.log(Point.distance(d1, d2));
+console.log(customer1.sayHi());
+console.log(customer1);
+console.log(CustomerES6.getTotal());
