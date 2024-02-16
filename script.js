@@ -1,57 +1,38 @@
-// Sets (Collection - Unique Value)
+// Classes
 
-let val;
-var mySet = new Set();
+// ES5
 
-mySet.add(1);
-mySet.add(2);
-mySet.add(2);
-mySet.add(4);
-mySet.add('iki');
-mySet.add({a:1, b: 2});
-mySet.add({a:1, b: 2});
+var PersonES5 = function(name, job, yearOfBirth){
+    this.name = name;
+    this.job = job;
+    this.yearOfBirth = yearOfBirth;
+}
 
-var obj = {a: 1, b:2};
+PersonES5.prototype.calculateAge = function(){
+    return 2018 - this.yearOfBirth;
+}
 
-mySet.add(obj);
-mySet.add('iki');
-mySet.add([1,2,3,4]);
-mySet.add([1,2,3,4]);
+var yigit = new PersonES5('Yiğit', 'Student', 2010);
 
-val = mySet.has(1);
-val = mySet.has(3);
-val = mySet.has(obj);
-val = mySet.size;
-mySet.delete(1);
+console.log(yigit.calculateAge());
+console.log(yigit);
 
-// console.log(mySet);
-// console.log(val);
+// ES6
 
-// for(let item of mySet){
-//     console.log(item);
-// }
+class PersonES6 {
+    constructor(name, job, yearOfBirth){
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
 
-// for(let item of mySet.keys()){
-//     console.log(item);
-// }
+    calculateAge(){
+        return 2018 - this.yearOfBirth;
+    }
+}
 
-// for(let item of mySet.values()){
-//     console.log(item);
-// }
+let emel = new PersonES6('emel', 'teacher', 1989);
 
-// console.log(Array.from(mySet));
+console.log(emel.calculateAge());
+console.log(emel);
 
-let mySet2 = new Set([1,2,3,4]);
-
-// console.log(mySet2);
-
-// intersect
-// var intersect = new Set(Array.from(mySet).filter(x => mySet2.has(x)));
-
-var intersect = new Set([...mySet].filter(x => mySet2.has(x)));
-// console.log(intersect);
-
-// difference
-
-var difference = new Set([...mySet].filter(x => !mySet2.has(x)));
-console.log(difference);
